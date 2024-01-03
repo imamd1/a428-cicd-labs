@@ -12,8 +12,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'npm install'
                 sh 'vercel --version'
+                sh 'npm install'
             }
         }
         stage('Test') {
