@@ -10,15 +10,20 @@ pipeline {
         }
     }
     stages {
-        stage('Build') {
+        stage('check vercel') {
             steps {
-                sh 'rm -rf node_modules/ && rm -rf package-lock.json'
-                sh 'npm install'
-                sh 'sudo npm i -g vercel'
-                sh 'vercel --token ${VERCEL_TOKEN}'
-                sh 'vercel --version'
+                sh 'npm i -g vercel'
             }
         }
+        // stage('Build') {
+        //     steps {
+        //         sh 'rm -rf node_modules/ && rm -rf package-lock.json'
+        //         sh 'npm install'
+        //         sh 'sudo npm i -g vercel'
+        //         sh 'vercel --token ${VERCEL_TOKEN}'
+        //         sh 'vercel --version'
+        //     }
+        // }
         // stage('Test') {
         //     steps {
         //         sh './jenkins/scripts/test.sh'
