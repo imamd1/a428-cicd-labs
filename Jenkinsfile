@@ -1,7 +1,7 @@
 pipeline {
     environment{
         VERCEL_TOKEN=credentials('vercel-token')
-        VERCEL_SCOPE=imamd
+        VERCEL_SCOPE='imamd'
     }
     agent {
         docker {
