@@ -13,9 +13,9 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'npm install'
-                sh 'vercel --token ${VERCEL_TOKEN}'
-                sh 'npm i -g vercel'
-                sh 'vercel --version'
+                // sh 'vercel --token ${VERCEL_TOKEN}'
+                // sh 'npm i -g vercel'
+                // sh 'vercel --version'
             }
         }
         stage('Test') {
