@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'rm -rf node_modules/'
+                sh 'rm -rf node_modules/ && rm -rf package-lock.json'
                 sh 'npm install'
                 // sh 'vercel --token ${VERCEL_TOKEN}'
                 // sh 'npm i -g vercel'
