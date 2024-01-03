@@ -14,7 +14,7 @@ pipeline {
             steps {
                 sh 'rm -rf node_modules/ && rm -rf package-lock.json'
                 sh 'npm install'
-                sh 'npm i -g vercel'
+                sh 'sudo npm i -g vercel'
                 sh 'vercel --token ${VERCEL_TOKEN}'
                 sh 'vercel --version'
             }
