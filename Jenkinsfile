@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('check vercel') {
             steps {
-                sh 'sudo npm i -g vercel --unsafe-perm=true --allow-root'
+                sh 'npm i -g vercel'
                 sh 'vercel --version'
             }
         }
