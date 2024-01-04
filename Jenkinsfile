@@ -13,16 +13,17 @@ pipeline {
     stages {
         stage('check vercel') {
             steps {
-                // sh 'mkdir ~/.npm-global'
-                sh 'sudo chown -R `whoami` /usr/local/lib/node_modules'
-                // sh 'export NPM_CONFIG_PREFIX=~/.npm-global'
-                // sh 'echo -e "export NPM_CONFIG_PREFIX=~/.npm-global\nexport PATH=$PATH:~/.npm-global/bin" >> ~/.bashrc'
-                // sh 'npm config set prefix "~/.npm-global"'
-                // sh 'export PATH=~/.npm-global/bin'
-                sh 'npm install --global vercel'
-                sh 'vercel login'
-                // sh 'source ~/.profile'
-                sh 'vercel --version'
+                // // sh 'mkdir ~/.npm-global'
+                // sh 'sudo chown -R `whoami` /usr/local/lib/node_modules'
+                // // sh 'export NPM_CONFIG_PREFIX=~/.npm-global'
+                // // sh 'echo -e "export NPM_CONFIG_PREFIX=~/.npm-global\nexport PATH=$PATH:~/.npm-global/bin" >> ~/.bashrc'
+                // // sh 'npm config set prefix "~/.npm-global"'
+                // // sh 'export PATH=~/.npm-global/bin'
+                // sh 'npm install --global vercel'
+                // sh 'vercel login'
+                // // sh 'source ~/.profile'
+                // sh 'vercel --version'
+                sh './jenkins/scripts/deploy.sh'
             }
         }
         // stage('Build') {
