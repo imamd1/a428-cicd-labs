@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('check vercel') {
             steps {
-                // sh 'npm i -g vercel'
+                sh 'npm i -g vercel'
                 sh 'vercel --version'
             }
         }
