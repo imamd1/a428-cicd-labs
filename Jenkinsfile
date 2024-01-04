@@ -7,15 +7,16 @@ pipeline {
     agent {
         docker {
             image 'node:20-alpine'
-            // args '-p 3000:3000'
+            args '-p 3000:3000'
         }
     }
     stages {
         stage('check vercel') {
             steps {
-                sh 'mkdir ~/.npm-global'
+                // sh 'mkdir ~/.npm-global'
+                sh 'chown -R `whoami` /usr/local/lib/node_modules'
                 // sh 'export NPM_CONFIG_PREFIX=~/.npm-global'
-                sh 'echo -e "export NPM_CONFIG_PREFIX=~/.npm-global\nexport PATH=$PATH:~/.npm-global/bin" >> ~/.bashrc'
+                // sh 'echo -e "export NPM_CONFIG_PREFIX=~/.npm-global\nexport PATH=$PATH:~/.npm-global/bin" >> ~/.bashrc'
                 // sh 'npm config set prefix "~/.npm-global"'
                 // sh 'export PATH=~/.npm-global/bin'
                 sh 'npm install --global vercel'
