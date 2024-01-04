@@ -19,11 +19,12 @@ pipeline {
                 // // sh 'echo -e "export NPM_CONFIG_PREFIX=~/.npm-global\nexport PATH=$PATH:~/.npm-global/bin" >> ~/.bashrc'
                 // // sh 'npm config set prefix "~/.npm-global"'
                 // // sh 'export PATH=~/.npm-global/bin'
-                // sh 'npm install --global vercel'
+                sh 'npm cache clean -f'
+                sh 'npm install --global vercel'
                 // sh 'vercel login'
                 // // sh 'source ~/.profile'
-                // sh 'vercel --version'
-                sh './jenkins/scripts/deploy.sh'
+                sh 'vercel --version'
+                // sh './jenkins/scripts/deploy.sh'
             }
         }
         // stage('Build') {
