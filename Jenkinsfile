@@ -2,7 +2,6 @@ pipeline {
     environment{
         VERCEL_TOKEN=credentials('vercel-token')
         VERCEL_SCOPE='imamd'
-        NPM_CONFIG_PREFIX='~/.npm-global'
     }
     // agent any
     agent {
@@ -15,9 +14,10 @@ pipeline {
         stage('check vercel') {
             steps {
                 sh 'mkdir ~/.npm-global'
-                sh 'NPM_CONFIG_PREFIX=~/.npm-global'
+                sh 'export NPM_CONFIG_PREFIX=~/.npm-global'
                 // sh 'npm config set prefix "~/.npm-global"'
-                // sh 'export PATH=~/.npm-global/bin:$PATH'
+                sh 'export PATH=~/.npm-global/bin:$PATH'
+                sh 'echo -e "export NPM_CONFIG_PREFIX=~/.npm-global\nexport PATH=$PATH:~/.npm-global/bin" >> ~/.bashrc'
                 // sh 'source ~/.profile'
                 sh 'npm install --global vercel'
                 // sh 'vercel --token ${VERCEL_TOKEN}'
