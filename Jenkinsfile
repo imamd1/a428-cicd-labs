@@ -13,7 +13,8 @@ pipeline {
     stages {
         stage('check vercel') {
             steps {
-                sh 'npm install vercel'
+                sh 'npm install --global vercel'
+                sh 'vercel --token ${VERCEL_TOKEN}'
                 sh 'vercel --version'
             }
         }
