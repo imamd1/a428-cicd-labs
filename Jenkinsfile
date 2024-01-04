@@ -2,7 +2,7 @@ pipeline {
     environment{
         VERCEL_TOKEN=credentials('vercel-token')
         VERCEL_SCOPE='imamd'
-        NPM_CONFIG_PREFIX=~/.npm-global
+        NPM_CONFIG_PREFIX='~/.npm-global'
     }
     // agent any
     agent {
