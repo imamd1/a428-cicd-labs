@@ -16,11 +16,11 @@ pipeline {
                 sh 'mkdir ~/.npm-global'
                 sh 'export NPM_CONFIG_PREFIX=~/.npm-global'
                 // sh 'npm config set prefix "~/.npm-global"'
-                sh 'export PATH=~/.npm-global/bin'
+                // sh 'export PATH=~/.npm-global/bin'
+                sh 'vercel login'
                 // sh 'echo -e "export NPM_CONFIG_PREFIX=~/.npm-global\nexport PATH=$PATH:~/.npm-global/bin" >> ~/.bashrc'
                 // sh 'source ~/.profile'
                 sh 'npm install --global vercel'
-                // sh 'vercel --token ${VERCEL_TOKEN}'
                 sh 'vercel --version'
             }
         }
