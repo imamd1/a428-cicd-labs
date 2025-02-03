@@ -1,24 +1,30 @@
-node {
-    // Menjalankan agen menggunakan Docker
-    docker.image('node:lts-buster-slim').inside('-p 3000:3000') {
-
-        stage('Build') {
-            // Menginstal dependensi menggunakan npm
-            sh 'npm install'
-        }
-
-        stage('Test') {
-            // Menjalankan skrip test
-            sh './jenkins/scripts/test.sh'
+pipeline {
+    agent {
+        docker {
+            image 'node:lts-buster-slim'
+            args '-p 3000:3000'
         }
     }
-
-
-    withDockerContainer(args: '-p 3001:3001', image: 'node:lts-buster-slim') {
-    // some block
-    stage('Build') {
-            // Menginstal dependensi menggunakan npm
-            sh 'npm install'
+    environment {
+        CI = 'true'
+    }
+    stages {
+        stage('Build') {
+            steps {
+                sh 'npm install'
+            }
         }
-}
+        stage('Test') {
+            steps {
+                sh './jenkins/scripts/test.sh'
+            }
+        }
+        stage('Deliver') {
+            steps {
+                sh './jenkins/scripts/deliver.sh'
+                input message: 'Finished using the web site? (Click "Proceed" to continue)'
+                sh './jenkins/scripts/kill.sh'
+            }
+        }
+    }
 }
