@@ -6,6 +6,7 @@ echo '"/var/jenkins_home/workspace/simple-node-js-react-app" directory),'
 echo 'correctly bundles React in production mode and optimizes the build for'
 echo 'the best performance.'
 set -x
+export NODE_OPTIONS=--openssl-legacy-provider
 npm run build
 set +x
 
@@ -24,6 +25,6 @@ echo $! > .pidfile
 set +x
 
 echo 'Now...'
-echo 'Visit http://localhost:3000 to see your Node.js/React application in action.'
-echo '(This is why you specified the "args ''-p 3000:3000''" parameter when you'
+echo 'Visit http://localhost:3001 to see your Node.js/React application in action.'
+echo '(This is why you specified the "args ''-p 3001:3001''" parameter when you'
 echo 'created your initial Pipeline as a Jenkinsfile.)'

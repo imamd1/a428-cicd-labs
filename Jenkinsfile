@@ -1,16 +1,22 @@
 pipeline {
     agent any
+    agent {
+        docker {
+            image 'node:16-buster-slim' 
+            args '-p 3001:3001' 
+        }
+    }
     stages {
         stage('Build') { 
             steps {
                 sh 'npm install'
-                args '-p 3001:3001'
             }
         }
-        stage('Test') { 
+        stage('Test') {
             steps {
-                sh './jenkins/scripts/test.sh' 
+                sh './jenkins/scripts/test.sh'
             }
         }
     }
+    
 }
